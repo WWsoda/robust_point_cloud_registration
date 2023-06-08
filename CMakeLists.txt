@@ -2,11 +2,14 @@ cmake_minimum_required (VERSION 2.8)
 project(point_cloud_registration)
 
 find_package(catkin_simple REQUIRED)
-find_package(PCL 1.7 REQUIRED)
+find_package(PCL 1.10 REQUIRED)
 find_package(VTK REQUIRED)
+set(BOOST_LIBRARYDIR /usr/lib)
+find_package(Boost REQUIRED COMPONENTS thread)
 
 catkin_simple(ALL_DEPS_REQUIRED)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_STANDARD 14)
 
 cs_add_library(${PROJECT_NAME}
   src/robust_pcl_registration/point_cloud_registration.cc
